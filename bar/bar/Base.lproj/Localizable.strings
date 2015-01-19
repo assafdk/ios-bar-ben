@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  bar
+
+  Created by Ben Boral on 1/18/15.
+  Copyright (c) 2015 Ben Boral. All rights reserved.
+*/
+"registrationUrl"="http://boraltests.nfshost.com/register.html";
+"Login Bar Name Error"="Please enter a valid bar name";
+"Login Passcode Error"="Please enter a valid password";
+"No Internet Error"="Please connect to the internet";
+"Couldn't find valid bar"="Can't find valid bar. Please check your input";
+"Error"="Error";
+"OK"="OK";
+"No Bar Title" = "Test Session";

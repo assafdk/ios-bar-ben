@@ -1,0 +1,18 @@
+
+/* Class = "IBUIButton"; normalTitle = "Login"; ObjectID = "Mmy-LQ-dib"; */
+"Mmy-LQ-dib.normalTitle" = "כניסה";
+
+/* Class = "IBUILabel"; text = "Passcode"; ObjectID = "Ukc-vp-hOM"; */
+"Ukc-vp-hOM.text" = "סיסמה";
+
+/* Class = "IBUILabel"; text = "OR"; ObjectID = "hbQ-5E-chz"; */
+"hbQ-5E-chz.text" = "או";
+
+/* Class = "IBUIButton"; normalTitle = "Just Try It Out"; ObjectID = "ogF-Gu-D8V"; */
+"ogF-Gu-D8V.normalTitle" = "רק לנסות את זה";
+
+/* Class = "IBUILabel"; text = "Bar"; ObjectID = "oqZ-ZA-Eo5"; */
+"oqZ-ZA-Eo5.text" = "פאב";
+
+/* Class = "IBUIBarButtonItem"; title = "Register"; ObjectID = "vvL-EF-jho"; */
+"vvL-EF-jho.title" = "הרשמה";

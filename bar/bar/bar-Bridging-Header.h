@@ -3,3 +3,5 @@
 //
 
 #import <Parse/Parse.h>
+#import "Reachability.h"
+#import "Reachability.m"
