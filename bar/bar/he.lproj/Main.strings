@@ -1,18 +1,27 @@
 
-/* Class = "IBUIButton"; normalTitle = "Login"; ObjectID = "Mmy-LQ-dib"; */
+/* Class = "IBUILabel"; text = " "; ObjectID = "Bi8-e5-Ue4"; */
+"Bi8-e5-Ue4.text" = " ";
+
+/* Class = "IBUIButton"; normalTitle = "כניסה"; ObjectID = "Mmy-LQ-dib"; */
 "Mmy-LQ-dib.normalTitle" = "כניסה";
 
-/* Class = "IBUILabel"; text = "Passcode"; ObjectID = "Ukc-vp-hOM"; */
+/* Class = "IBUILabel"; text = "סיסמה"; ObjectID = "Ukc-vp-hOM"; */
 "Ukc-vp-hOM.text" = "סיסמה";
 
-/* Class = "IBUILabel"; text = "OR"; ObjectID = "hbQ-5E-chz"; */
+/* Class = "IBUILabel"; text = "או"; ObjectID = "hbQ-5E-chz"; */
 "hbQ-5E-chz.text" = "או";
 
-/* Class = "IBUIButton"; normalTitle = "Just Try It Out"; ObjectID = "ogF-Gu-D8V"; */
+/* Class = "IBUIButton"; normalTitle = "רק לנסות את זה"; ObjectID = "ogF-Gu-D8V"; */
 "ogF-Gu-D8V.normalTitle" = "רק לנסות את זה";
 
-/* Class = "IBUILabel"; text = "Bar"; ObjectID = "oqZ-ZA-Eo5"; */
+/* Class = "IBUILabel"; text = "פאב"; ObjectID = "oqZ-ZA-Eo5"; */
 "oqZ-ZA-Eo5.text" = "פאב";
 
-/* Class = "IBUIBarButtonItem"; title = "Register"; ObjectID = "vvL-EF-jho"; */
+/* Class = "IBUIButton"; normalTitle = "Start New Session"; ObjectID = "sCI-op-Lyh"; */
+"sCI-op-Lyh.normalTitle" = "התחל הפעלה חדשה";
+
+/* Class = "IBUIBarButtonItem"; title = "הרשמה"; ObjectID = "vvL-EF-jho"; */
 "vvL-EF-jho.title" = "הרשמה";
+
+/* Class = "IBUIButton"; normalTitle = "שינוי מושב"; ObjectID = "yHl-Ki-75T"; */
+"yHl-Ki-75T.normalTitle" = "שינוי מושב";

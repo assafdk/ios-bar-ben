@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1tk-R2-FZH">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -143,12 +144,106 @@
                     <view key="view" contentMode="scaleToFill" id="87Z-I6-8nI">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bi8-e5-Ue4">
+                                <rect key="frame" x="0.0" y="579" width="484" height="20.5"/>
+                                <color key="backgroundColor" red="1" green="0.193356942" blue="0.30943175270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="501" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHl-Ki-75T">
+                                <rect key="frame" x="484" y="578" width="116" height="22"/>
+                                <color key="backgroundColor" red="1" green="0.93461569509999998" blue="0.61640382380000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="contentEdgeInsets" minX="2" minY="2" maxX="2" maxY="2"/>
+                                <state key="normal" title="Change Session">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapChangeSessionButton:" destination="lfS-xN-Tqg" eventType="touchUpInside" id="RFn-Kt-LsX"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="0.51420135929999999" green="1" blue="0.35291581150000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="dKw-Mj-dfa" firstAttribute="top" secondItem="Bi8-e5-Ue4" secondAttribute="bottom" id="8TK-Jz-j75"/>
+                            <constraint firstItem="dKw-Mj-dfa" firstAttribute="top" secondItem="yHl-Ki-75T" secondAttribute="bottom" id="N7p-t3-9af"/>
+                            <constraint firstItem="Bi8-e5-Ue4" firstAttribute="leading" secondItem="87Z-I6-8nI" secondAttribute="leadingMargin" constant="-16" id="ZcF-c2-rx5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Bi8-e5-Ue4" secondAttribute="trailing" constant="-16" id="hWF-RJ-nOK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yHl-Ki-75T" secondAttribute="trailing" constant="-16" id="kCy-bW-POW"/>
+                            <constraint firstItem="yHl-Ki-75T" firstAttribute="leading" secondItem="Bi8-e5-Ue4" secondAttribute="trailing" id="xpS-ig-eBR"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="hWF-RJ-nOK"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="changeSessionButton" destination="yHl-Ki-75T" id="QUf-iH-AoV"/>
+                        <outlet property="sessionLabel" destination="Bi8-e5-Ue4" id="hBz-BT-dKA"/>
+                        <segue destination="WhO-P9-CLu" kind="presentation" identifier="ChangeSessionSegue" id="8vu-qe-N5B"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RiL-Ya-Y0E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1221" y="-39"/>
+        </scene>
+        <!--Change Session Table View Controller-->
+        <scene sceneID="FwJ-Gc-kpk">
+            <objects>
+                <viewController id="WhO-P9-CLu" customClass="ChangeSessionTableViewController" customModule="bar" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RsO-mU-7VE"/>
+                        <viewControllerLayoutGuide type="bottom" id="JyR-kE-7Ng"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TFu-SW-d1n">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="XZp-5j-o7k">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="570"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="WhO-P9-CLu" id="Vun-5c-SUQ"/>
+                                    <outlet property="delegate" destination="WhO-P9-CLu" id="bLP-m9-DWk"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="501" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sCI-op-Lyh">
+                                <rect key="frame" x="16" y="570" width="568" height="30"/>
+                                <state key="normal" title="Start New Session">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapStartNewSessionButton:" destination="WhO-P9-CLu" eventType="touchUpInside" id="ckA-x9-CIO"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XZp-5j-o7k" firstAttribute="top" secondItem="TFu-SW-d1n" secondAttribute="topMargin" id="CtI-m9-2AA"/>
+                            <constraint firstItem="JyR-kE-7Ng" firstAttribute="top" secondItem="sCI-op-Lyh" secondAttribute="bottom" id="Y44-Z8-G6q"/>
+                            <constraint firstItem="sCI-op-Lyh" firstAttribute="top" secondItem="XZp-5j-o7k" secondAttribute="bottom" id="a2c-ea-O97"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sCI-op-Lyh" secondAttribute="trailing" id="agk-qm-8Ev"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="XZp-5j-o7k" secondAttribute="trailing" constant="-16" id="fQD-5g-7i2"/>
+                            <constraint firstItem="sCI-op-Lyh" firstAttribute="leading" secondItem="TFu-SW-d1n" secondAttribute="leadingMargin" id="pDz-3d-oXo"/>
+                            <constraint firstItem="sCI-op-Lyh" firstAttribute="top" secondItem="XZp-5j-o7k" secondAttribute="bottom" id="sEN-wS-Qhb"/>
+                            <constraint firstItem="XZp-5j-o7k" firstAttribute="leading" secondItem="TFu-SW-d1n" secondAttribute="leadingMargin" constant="-16" id="xCR-PP-N5H"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="a2c-ea-O97"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="startNewSessionButton" destination="sCI-op-Lyh" id="ldZ-aN-ea8"/>
+                        <outlet property="tableView" destination="XZp-5j-o7k" id="Gtr-my-a0o"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pCy-B2-I6Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1221" y="660"/>
         </scene>
     </scenes>
 </document>

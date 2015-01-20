@@ -32,6 +32,11 @@
 		8712A4491A6CC1B100C20FF5 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 8712A4481A6CC1B100C20FF5 /* Reachability.m */; };
 		8712A44C1A6D4FDF00C20FF5 /* CounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8712A44B1A6D4FDF00C20FF5 /* CounterViewController.swift */; };
 		8712A44E1A6D551200C20FF5 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8712A44D1A6D551200C20FF5 /* SessionManager.swift */; };
+		8712A4521A6DCC0200C20FF5 /* SessionManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8712A4511A6DCC0200C20FF5 /* SessionManagerProtocol.swift */; };
+		8712A4541A6DFA8D00C20FF5 /* BarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8712A4531A6DFA8D00C20FF5 /* BarViewController.swift */; };
+		8712A4581A6E085D00C20FF5 /* ChangeSessionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8712A4571A6E085D00C20FF5 /* ChangeSessionTableViewController.swift */; };
+		8712A45A1A6E090C00C20FF5 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8712A4591A6E090C00C20FF5 /* SessionService.swift */; };
+		8712A45E1A6E18B200C20FF5 /* SessionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8712A45D1A6E18B200C20FF5 /* SessionFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,9 +60,9 @@
 		8712A3F91A6C82D300C20FF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8712A3FA1A6C82D300C20FF5 /* barTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = barTests.swift; sourceTree = "<group>"; };
 		8712A4051A6C869100C20FF5 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
-		8712A4081A6C8A3B00C20FF5 /* bar-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bar-Bridging-Header.h"; sourceTree = "<group>"; };
-		8712A40B1A6C8AB700C20FF5 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
-		8712A40D1A6C8AEC00C20FF5 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		8712A4081A6C8A3B00C20FF5 /* bar-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "bar-Bridging-Header.h"; path = "bar/bar-Bridging-Header.h"; sourceTree = "<group>"; };
+		8712A40B1A6C8AB700C20FF5 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = bar/Parse.framework; sourceTree = "<group>"; };
+		8712A40D1A6C8AEC00C20FF5 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = bar/Bolts.framework; sourceTree = "<group>"; };
 		8712A40F1A6C8BD000C20FF5 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		8712A4111A6C8C1E00C20FF5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		8712A4131A6C8C4D00C20FF5 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -69,7 +74,6 @@
 		8712A4211A6C8CBB00C20FF5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8712A4231A6C8CC100C20FF5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		8712A4251A6C8CC900C20FF5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		8712A4271A6C94C000C20FF5 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Main.strings; sourceTree = "<group>"; };
 		8712A4281A6C94C000C20FF5 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		8712A4291A6CABF700C20FF5 /* Either.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Either.swift; sourceTree = "<group>"; };
 		8712A42C1A6CAC6600C20FF5 /* LoginService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
@@ -80,6 +84,12 @@
 		8712A44A1A6CC1E500C20FF5 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		8712A44B1A6D4FDF00C20FF5 /* CounterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CounterViewController.swift; sourceTree = "<group>"; };
 		8712A44D1A6D551200C20FF5 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		8712A4511A6DCC0200C20FF5 /* SessionManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManagerProtocol.swift; sourceTree = "<group>"; };
+		8712A4531A6DFA8D00C20FF5 /* BarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarViewController.swift; sourceTree = "<group>"; };
+		8712A4571A6E085D00C20FF5 /* ChangeSessionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeSessionTableViewController.swift; sourceTree = "<group>"; };
+		8712A4591A6E090C00C20FF5 /* SessionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionService.swift; sourceTree = "<group>"; };
+		8712A45C1A6E181300C20FF5 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Main.strings; sourceTree = "<group>"; };
+		8712A45D1A6E18B200C20FF5 /* SessionFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +126,10 @@
 		8712A3D61A6C82D300C20FF5 = {
 			isa = PBXGroup;
 			children = (
+				8712A40B1A6C8AB700C20FF5 /* Parse.framework */,
+				8712A40D1A6C8AEC00C20FF5 /* Bolts.framework */,
 				8712A4251A6C8CC900C20FF5 /* libz.dylib */,
+				8712A4081A6C8A3B00C20FF5 /* bar-Bridging-Header.h */,
 				8712A4231A6C8CC100C20FF5 /* StoreKit.framework */,
 				8712A4211A6C8CBB00C20FF5 /* QuartzCore.framework */,
 				8712A41F1A6C8CB700C20FF5 /* MobileCoreServices.framework */,
@@ -147,7 +160,6 @@
 			children = (
 				8712A42E1A6CAFAD00C20FF5 /* LocalizationStrings */,
 				8712A42B1A6CAC5800C20FF5 /* Services */,
-				8712A4071A6C8A1300C20FF5 /* Parse */,
 				8712A4041A6C868300C20FF5 /* ViewControllers */,
 				8712A3E41A6C82D300C20FF5 /* AppDelegate.swift */,
 				8712A3E81A6C82D300C20FF5 /* Main.storyboard */,
@@ -188,18 +200,10 @@
 			children = (
 				8712A4051A6C869100C20FF5 /* WelcomeViewController.swift */,
 				8712A44B1A6D4FDF00C20FF5 /* CounterViewController.swift */,
+				8712A4531A6DFA8D00C20FF5 /* BarViewController.swift */,
+				8712A4571A6E085D00C20FF5 /* ChangeSessionTableViewController.swift */,
 			);
 			name = ViewControllers;
-			sourceTree = "<group>";
-		};
-		8712A4071A6C8A1300C20FF5 /* Parse */ = {
-			isa = PBXGroup;
-			children = (
-				8712A40D1A6C8AEC00C20FF5 /* Bolts.framework */,
-				8712A40B1A6C8AB700C20FF5 /* Parse.framework */,
-				8712A4081A6C8A3B00C20FF5 /* bar-Bridging-Header.h */,
-			);
-			name = Parse;
 			sourceTree = "<group>";
 		};
 		8712A42B1A6CAC5800C20FF5 /* Services */ = {
@@ -210,6 +214,9 @@
 				8712A4291A6CABF700C20FF5 /* Either.swift */,
 				8712A42C1A6CAC6600C20FF5 /* LoginService.swift */,
 				8712A44D1A6D551200C20FF5 /* SessionManager.swift */,
+				8712A4511A6DCC0200C20FF5 /* SessionManagerProtocol.swift */,
+				8712A4591A6E090C00C20FF5 /* SessionService.swift */,
+				8712A45D1A6E18B200C20FF5 /* SessionFactory.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -324,13 +331,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8712A4521A6DCC0200C20FF5 /* SessionManagerProtocol.swift in Sources */,
 				8712A3E51A6C82D300C20FF5 /* AppDelegate.swift in Sources */,
 				8712A42A1A6CABF700C20FF5 /* Either.swift in Sources */,
 				8712A44E1A6D551200C20FF5 /* SessionManager.swift in Sources */,
+				8712A4541A6DFA8D00C20FF5 /* BarViewController.swift in Sources */,
 				8712A4061A6C869100C20FF5 /* WelcomeViewController.swift in Sources */,
+				8712A45A1A6E090C00C20FF5 /* SessionService.swift in Sources */,
 				8712A44C1A6D4FDF00C20FF5 /* CounterViewController.swift in Sources */,
 				8712A42D1A6CAC6600C20FF5 /* LoginService.swift in Sources */,
+				8712A4581A6E085D00C20FF5 /* ChangeSessionTableViewController.swift in Sources */,
 				8712A4491A6CC1B100C20FF5 /* Reachability.m in Sources */,
+				8712A45E1A6E18B200C20FF5 /* SessionFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,7 +369,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				8712A3E91A6C82D300C20FF5 /* Base */,
-				8712A4271A6C94C000C20FF5 /* he */,
+				8712A45C1A6E181300C20FF5 /* he */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WelcomeViewController: UIViewController, UITextFieldDelegate {
+class WelcomeViewController: BarViewController, UITextFieldDelegate {
     
     @IBOutlet weak var barNameLabel: UILabel!
     @IBOutlet weak var barNameTextField: UITextField!
@@ -52,13 +52,6 @@ class WelcomeViewController: UIViewController, UITextFieldDelegate {
             return Either(obj: false, error: error)
         }
         return Either(obj: true, error: nil)
-    }
-    
-    func showError(errorMessage: String) {
-        let errorTitle = NSLocalizedString("Error", comment: "General Error")
-        let okayTitle = NSLocalizedString("OK", comment: "OK")
-        let alert = UIAlertView(title: errorTitle, message: errorMessage, delegate: nil, cancelButtonTitle: okayTitle)
-        alert.show()
     }
     
     @IBAction func didTapRegisterButton(sender: AnyObject) {

@@ -8,54 +8,44 @@
 
 import Foundation
 
-class SessionManager {
+class SessionManager: ChangeSessionProtocol {
     
-    let timeOut: NSTimeInterval = 7200
     var bar: PFObject?
     var session: PFObject?
+    var delegate: SessionManagerProtocol?
     
     init(bar: PFObject?){
         self.bar = bar
     }
     
-    func beginSession(){
-        getExistingSession { (result: Either<PFObject?, NSError?>) -> Void in
+    func fetchSession() {
+        SessionService.getExistingSession(self.bar, completion: { (result: Either<PFObject?, NSError?>) -> Void in
             if (result.error == nil && result.obj != nil) {
                 self.session = result.obj!!
             } else {
-                self.session = PFObject(className: "Session")
+                self.session = SessionFactory.makeSession(self.bar)
             }
-            if (self.bar != nil && self.session!.objectForKey("bar") != nil) {
-                self.session!.addObject(self.bar, forKey: "bar")
-            }
+            self.beginSession()
+        })
+    }
+    
+    func beginSession(){
+            //save to update the modifiedAt and createdAt
+        if (self.session != nil) {
+            self.session!.saveInBackgroundWithBlock({ (success: Bool, error: NSError!) -> Void in
+                println("DID SAVE WITH SUCCESS: \(success)")
+                if (success) {
+                    self.delegate?.sessionManagerDidUpdateSession(self)
+                }
+                else {
+                    self.delegate?.sessionManagerFailedToUpdateSession(self, error: error)
+                }
+            })
         }
     }
     
-    private func getExistingSession(completion: (Either<PFObject?, NSError?>) -> Void) {
-        var query = PFQuery(className: "Session")
-        if (bar != nil) {
-            query.whereKey("bar", equalTo: bar)
-        }
-        query.whereKey("updatedAt", lessThan: NSDate())
-        query.whereKey("updatedAt", greaterThan: NSDate(timeIntervalSinceNow: (-1 * timeOut)))
-        query.orderByAscending("updatedAt")
-        
-        query.getFirstObjectInBackgroundWithBlock { (object: AnyObject!, error: NSError!) -> Void in
-            println("finished fetch, error: \(error)")
-            if (error != nil) {
-                let either = Either<PFObject?, NSError?>(obj: nil, error: error)
-                completion(either)
-            }
-            else if object != nil {
-                let session = object as PFObject
-                let either = Either<PFObject?, NSError?>(obj: session, error: nil)
-                completion(either)
-            }
-            else {
-                let error = NSError(domain: "No Session", code: 0, userInfo: [NSLocalizedDescriptionKey : "No Sessions Found"])
-                completion(Either<PFObject?, NSError?>(obj: nil, error: error))
-            }
-        }
+    func didChangeSession(newSession: PFObject) {
+        session = newSession
+        beginSession()
     }
-    
 }
