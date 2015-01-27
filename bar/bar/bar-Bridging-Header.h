@@ -5,3 +5,4 @@
 #import <Parse/Parse.h>
 #import "Reachability.h"
 #import "Reachability.m"
+#import <UIKit/UIGestureRecognizerSubclass.h>

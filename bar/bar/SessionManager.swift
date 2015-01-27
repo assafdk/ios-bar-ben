@@ -11,7 +11,11 @@ import Foundation
 class SessionManager: ChangeSessionProtocol {
     
     var bar: PFObject?
-    var session: PFObject?
+    var session: PFObject? {
+        didSet {
+            self.delegate?.sessionManagerDidUpdateSession(self)
+        }
+    }
     var delegate: SessionManagerProtocol?
     
     init(bar: PFObject?){
@@ -19,21 +23,21 @@ class SessionManager: ChangeSessionProtocol {
     }
     
     func fetchSession() {
+        self.session = SessionFactory.makeSession(self.bar)
+        self.beginSession()
+        
         SessionService.getExistingSession(self.bar, completion: { (result: Either<PFObject?, NSError?>) -> Void in
             if (result.error == nil && result.obj != nil) {
                 self.session = result.obj!!
-            } else {
-                self.session = SessionFactory.makeSession(self.bar)
+                self.beginSession()
             }
-            self.beginSession()
         })
     }
     
     func beginSession(){
-            //save to update the modifiedAt and createdAt
+        //save to update the modifiedAt and createdAt
         if (self.session != nil) {
             self.session!.saveInBackgroundWithBlock({ (success: Bool, error: NSError!) -> Void in
-                println("DID SAVE WITH SUCCESS: \(success)")
                 if (success) {
                     self.delegate?.sessionManagerDidUpdateSession(self)
                 }
@@ -45,6 +49,7 @@ class SessionManager: ChangeSessionProtocol {
     }
     
     func didChangeSession(newSession: PFObject) {
+        SessionService.performHouseKeeping(session)
         session = newSession
         beginSession()
     }

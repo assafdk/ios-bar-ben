@@ -37,6 +37,33 @@ class SessionService {
         }
     }
     
+    class func lastUpdatedForSession(session: PFObject, completion: (PFObject?, NSDate?) -> Void) {
+        var query = PFQuery(className: "Count")
+        query.whereKey("session", equalTo: session)
+        query.orderByDescending("timeStamp")
+        query.getFirstObjectInBackgroundWithBlock { (count: PFObject!, err: NSError!) -> Void in
+            if (count != nil) {
+                let lastUpdate: NSDate? = count.objectForKey("timeStamp") as NSDate?
+                completion(session, lastUpdate)
+            }
+            else {
+                completion(nil, nil)
+            }
+        }
+    }
+    
+    class func performHouseKeeping(session: PFObject?) {
+        if session != nil {
+            var query = PFQuery(className: "Count")
+            query.whereKey("session", equalTo: session)
+            query.countObjectsInBackgroundWithBlock({ (ct: Int32, err: NSError!) -> Void in
+                if (ct == 0 && err == nil) {
+                    session?.deleteEventually()
+                }
+             })
+        }
+    }
+    
     class func getExistingSession(bar: PFObject?, completion: (Either<PFObject?, NSError?>) -> Void) {
         var query = PFQuery(className: "Session")
         if (bar != nil) {
@@ -47,7 +74,6 @@ class SessionService {
         query.orderByDescending("updatedAt")
         
         query.getFirstObjectInBackgroundWithBlock { (object: AnyObject!, error: NSError!) -> Void in
-            println("finished fetch, error: \(error)")
             if (error != nil) {
                 let either = Either<PFObject?, NSError?>(obj: nil, error: error)
                 completion(either)

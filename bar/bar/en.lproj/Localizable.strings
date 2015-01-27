@@ -13,7 +13,8 @@
 "Error" = "Error";
 "OK" = "OK";
 "No Bar Title" = "Test Session";
-"From" = "From";
+"From" = "Count Started";
 "Change Session" = "Change Session";
 "No Bar" = "Please login to a bar to access this feature";
 "Last Updated" = "Last Updated: ";
+"Sessions Header" = "Count Sessions (start-last update)";

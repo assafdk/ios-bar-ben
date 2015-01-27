@@ -16,7 +16,14 @@ class LoginService {
         query.findObjectsInBackgroundWithBlock { (objects: [AnyObject]!, error: NSError!) -> Void in
             println("finished fetch, error: \(error)")
             if (error != nil) {
-                let either = Either<PFObject?, NSError?>(obj: nil, error: error)
+                var either: Either<PFObject?, NSError?>
+                if (error.domain == "Parse" && error.code == 100){
+                    let err = NSError(domain: "no internet", code: 0, userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("No Internet Error", comment:"couldn't get internet")])
+                    either = Either<PFObject?, NSError?>(obj: nil, error: err)
+                }
+                else {
+                    either = Either<PFObject?, NSError?>(obj: nil, error: error)
+                }
                 completion(either)
                 return
             }else if (countElements(objects) > 0) {

@@ -25,11 +25,23 @@ class ChangeSessionTableViewController: BarViewController, UITableViewDelegate, 
         return dateFormatter
     }()
     
+    lazy var lastUpdates: Dictionary<PFObject, NSDate> = Dictionary<PFObject, NSDate>()
+    
     override func viewDidLoad() {
         SessionService.getAllSessions(bar, completion: { (result: Either<[PFObject]?, NSError?>) -> Void in
             
             if (result.obj != nil) {
                 self.sessions = result.obj!!
+                
+                for session in self.sessions {
+                    SessionService.lastUpdatedForSession(session, completion: { (updatedSession: PFObject?, date: NSDate?) -> Void in
+                        if (date != nil && updatedSession != nil) {
+                            self.lastUpdates.updateValue(date!, forKey: updatedSession!)
+                            self.tableView.reloadData()
+                        }
+                    })
+                }
+                
                 self.tableView.reloadData()
                 return
             }
@@ -38,12 +50,19 @@ class ChangeSessionTableViewController: BarViewController, UITableViewDelegate, 
                 if (err.domain == "No Bar" && err.code == 0){
                     self.showError(err.localizedDescription)
                 }
+                else if (err.domain == "Parse" && err.code == 100) {
+                    self.showError(NSLocalizedString("No Internet Error", comment: ""))
+                }
             }
         })
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sessions.count
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String {
+        return NSLocalizedString("Sessions Header", comment:"")
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -53,8 +72,10 @@ class ChangeSessionTableViewController: BarViewController, UITableViewDelegate, 
         }
         
         let session: PFObject = sessionForIndexPath(indexPath)
-        let lastUpdated: String = NSLocalizedString("Last Updated", comment: "ex Last Updated: 8/4/14 9PM")
-        cell?.textLabel?.text = dateFormatter.stringFromDate(session.updatedAt)
+        let update = (self.lastUpdates[session] == nil) ? "??" : dateFormatter.stringFromDate(self.lastUpdates[session]!)
+        let start = dateFormatter.stringFromDate(session.createdAt)
+        
+        cell?.textLabel?.text = start + " - " + update
         
         return cell!
     }
@@ -63,7 +84,7 @@ class ChangeSessionTableViewController: BarViewController, UITableViewDelegate, 
         let session: PFObject = sessionForIndexPath(indexPath)
         didSelectSession(session)
     }
-
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return sessions.isEmpty ? 0 : 1
     }

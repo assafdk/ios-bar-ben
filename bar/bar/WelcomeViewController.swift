@@ -36,7 +36,7 @@ class WelcomeViewController: BarViewController, UITextFieldDelegate {
     
     func canAttemptLogin() -> Either<Bool, NSError> {
         
-        if (Reachability.reachabilityForInternetConnection().currentReachabilityStatus().value == 0){
+        if (Reachability(hostName: "www.google.com").currentReachabilityStatus().value == 0){
             let localizedDescription = NSLocalizedString("No Internet Error", comment: "Error Description")
             let error = NSError(domain: "Reachability Error", code: 0, userInfo: [NSLocalizedDescriptionKey: localizedDescription])
             return Either(obj: false, error: error)
